@@ -6,39 +6,39 @@ TSaveFileDataCallback = function (fileName: PChar; data: PByte; dataSize: Intege
 TLoadFileTextCallback = function (fileName: PChar): PChar;
 TSaveFileTextCallback = function (fileName: PChar; text: PChar): Boolean;
 
-TVector2 = packed record
+TVector2 = record
     x, y: Single;
 end;
 PTVector2 = ^TVector2;
-TVector3 = packed record
+TVector3 = record
     x, y, z: Single;
 end;
 PTVector3 = ^TVector3;
-TVector4 = packed record
+TVector4 = record
     x, y, z, w: Single;
 end;
 PTVector4 = ^TVector4;
 TQuaternion = TVector4;
 PTQuaternion = ^TQuaternion;
 
-TMatrix = packed record
+TMatrix = record
     m0, m4, m8, m12: Single;
     m1, m5, m9, m13: Single;
     m2, m6, m10, m14: Single;
     m3, m7, m11, m15: Single;
 end;
 PTMatrix = ^TMatrix;
-TColor = packed record
+TColor = record
     r, g, b, a: Byte;
 end;
 PTColor = ^TColor;
-TRectangle = packed record
+TRectangle = record
     x, y, width, height: Single;
 end;
 PTRectangle = ^TRectangle;
 PPTRectangle = ^PTRectangle;
 
-TImage = packed record
+TImage = record
     data: ^Byte;
     width: Integer;
     height: Integer;
@@ -46,7 +46,7 @@ TImage = packed record
     format: Integer;
 end;
 PTImage = ^TImage;
-TTexture = packed record
+TTexture = record
     id: dWord;
     width: Integer;
     height: Integer;
@@ -59,7 +59,7 @@ PTTexture2D = ^TTexture2D;
 TTextureCubemap = TTexture;
 PTTextureCubemap = ^TTextureCubemap;
 
-TRenderTexture = packed record
+TRenderTexture = record
     id: dWord;
     texture: TTexture;
     depth: TTexture;
@@ -68,7 +68,7 @@ PTRenderTexture = ^TRenderTexture;
 TRenderTexture2D = TRenderTexture;
 PTRenderTexture2D = ^TRenderTexture2D;
 
-TNPatchInfo = packed record
+TNPatchInfo = record
     source: TRectangle;
     left: Integer;
     top: Integer;
@@ -77,7 +77,7 @@ TNPatchInfo = packed record
     layout: Integer;
 end;
 PTNPatchInfo = ^TNPatchInfo;
-TGlyphInfo = packed record
+TGlyphInfo = record
     v: Integer;
     offsetX: Integer;
     offsetY: Integer;
@@ -85,7 +85,7 @@ TGlyphInfo = packed record
     image: TImage;
 end;
 PTGlyphInfo = ^TGlyphInfo;
-TFont = packed record
+TFont = record
     baseSize: Integer;
     glyphCount: Integer;
     glyphPadding: Integer;
@@ -95,14 +95,14 @@ TFont = packed record
 end;
 PTFont = ^TFont;
 
-TCamera2D = packed record
+TCamera2D = record
     offset: TVector2;
     target: TVector2;
     rotation: Single;
     zoom: Single;
 end;
 PTCamera2D = ^TCamera2D;
-TCamera3D = packed record
+TCamera3D = record
     position: TVector3;
     target: TVector3;
     up: TVector3;
@@ -113,24 +113,24 @@ PTCamera3D = ^TCamera3D;
 TCamera = TCamera3D;
 PTCamera = ^TCamera;
 
-TShader = packed record
+TShader = record
     id: dWord;
     locs: PInt;
 end;
 PTShader = ^TShader;
-TMaterialMap = packed record
+TMaterialMap = record
     texture: TTexture2D;
     color: TColor;
     v: Single;
 end;
 PTMaterialMap = ^TMaterialMap;
-TMaterial = packed record
+TMaterial = record
     shader: TShader;
     maps: PTMaterialMap;
     params: Array[0..3] of Single;
 end;
 PTMaterial = ^TMaterial;
-TMesh = packed record
+TMesh = record
     vertexCount: Integer;
     triangleCount: Integer;
 
@@ -154,13 +154,13 @@ TMesh = packed record
 end;
 PTMesh = ^TMesh;
 
-TBoneInfo = packed record
+TBoneInfo = record
     name: Array[0..31] of Char;
     parent: Integer;
 end;
 PTBoneInfo = ^TBoneInfo;
 
-TTransform = packed record
+TTransform = record
     translation: TVector3;
     rotation: TQuaternion;
     scale: TVector3;
@@ -168,7 +168,7 @@ end;
 PTTransform = ^TTransform;
 PPTTransform = ^PTTransform;
 
-TModel = packed record
+TModel = record
     transform: TMatrix;
 
     meshCount: Integer;
@@ -182,7 +182,7 @@ TModel = packed record
     bindPose: PTTransform;
 end;
 PTModel = ^TModel;
-TModelAnimation = packed record
+TModelAnimation = record
     boneCount: Integer;
     frameCount: Integer;
     bones: PTBoneInfo;
@@ -190,25 +190,25 @@ TModelAnimation = packed record
     name: Array[0..31] of Char;
 end;
 PTModelAnimation = ^TModelAnimation;
-TRay = packed record
+TRay = record
     position: TVector3;
     direction: TVector3;
 end;
 PTRay = ^TRay;
-TRayCollision = packed record
+TRayCollision = record
     hit: Boolean;
     distance: Single;
     point: TVector3;
     normal: TVector3;
 end;
 PTRayCollision = ^TRayCollision;
-TBoundingBox = packed record
+TBoundingBox = record
     min: TVector3;
     max: TVector3;
 end;
 PTBoundingBox = ^TBoundingBox;
 
-TWave = packed record
+TWave = record
     frameCount: dWord;
     sampleRate: dWord;
     sampleSize: dWord;
@@ -218,7 +218,7 @@ end;
 PTWave = ^TWave;
 PTrAudioBuffer = ^Byte;
 PTrAudioProcessor = ^Byte;
-TAudioStream = packed record
+TAudioStream = record
     buffer: PTrAudioBuffer;
     processor: PTrAudioProcessor;
 
@@ -227,12 +227,12 @@ TAudioStream = packed record
     channels: dWord;
 end;
 PTAudioStream = ^TAudioStream;
-TSound = packed record
+TSound = record
     stream: TAudioStream;
     frameCount: dWord;
 end;
 PTSound = ^TSound;
-TMusic = packed record
+TMusic = record
     stream: TAudioStream;
     frameCount: dWord;
     looping: Boolean;
@@ -243,7 +243,7 @@ end;
 PTMusic = ^TMusic;
 TAudioCallback = procedure (bufferData: PByte; frames: dWord);
 
-TVrDeviceInfo = packed record
+TVrDeviceInfo = record
     hResolution: Integer;
     vResolution: Integer;
     hScreenSize: Single;
@@ -255,7 +255,7 @@ TVrDeviceInfo = packed record
     chromaAbCorrection: Array[0..3] of Single;    
 end;
 PTVrDeviceInfo = ^TVrDeviceInfo;
-TVrStereoConfig = packed record
+TVrStereoConfig = record
     projection: Array[0..1] of TMatrix;
     viewOffset: Array[0..1] of TMatrix;
     leftLensCenter: Array[0..1] of Single;
@@ -267,7 +267,7 @@ TVrStereoConfig = packed record
 end;
 PTVrStereoConfig = ^TVrStereoConfig;
 
-TFilePathList = packed record
+TFilePathList = record
     capacity: dWord;
     count: dWord;
     paths: PPChar;
@@ -275,13 +275,13 @@ end;
 PTFilePathList = ^TFilePathList;
 
 // NOTE: type replaced with mtype
-TAutomationEvent = packed record
+TAutomationEvent = record
     frame: dWord;
     mtype: dWord;
     params: Array[0..3] of Integer;                  
 end;
 PTAutomationEvent = ^TAutomationEvent;
-TAutomationEventList = packed record
+TAutomationEventList = record
     capacity: dWord;
     count: dWord;
     events: PTAutomationEvent;
