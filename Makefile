@@ -1,7 +1,7 @@
 CC=fpc
 CFLAGS=-Fu./include/ -Fl./lib/ -Px86_64
 EXAMPLESDIR=./examples/
-EXAMPLES=squares
+EXAMPLES=squares helloworld
 EXAMPLESTARGETS=$(addsuffix .exe,$(addprefix $(EXAMPLESDIR),$(EXAMPLES)))
 
 .PHONY: examples clean
