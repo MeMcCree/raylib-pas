@@ -1,7 +1,7 @@
 # Pascal bindings for raylib
 Those bindings are WIP, so not all of the functionality is tested.
 Windows supports only linking with dll.
-Example usage:
+## Example usage:
 ```objectpascal
 program ray;
 uses raylib;
