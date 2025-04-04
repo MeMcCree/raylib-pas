@@ -28,6 +28,7 @@ function Color(r, g, b, a: Byte): TColor;
 function Vector2(x, y: Single): TVector2;
 function Vector3(x, y, z: Single): TVector3;
 function Vector4(x, y, z, w: Single): TVector4;
+function Rectangle(x, y, width, height: Single): TRectangle;
 
 implementation
 function Color(r, g, b, a: Byte): TColor;
@@ -57,5 +58,13 @@ begin
     result.y := y;
     result.z := z;
     result.w := w;
+end;
+
+function Rectangle(x, y, width, height: Single): TRectangle;
+begin
+    result.x := x;
+    result.y := y;
+    result.width := width;
+    result.height := height;
 end;
 end.

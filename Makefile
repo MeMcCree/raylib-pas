@@ -1,10 +1,11 @@
 CC=fpc
+CINC=./include/
 CUNIT=./include/
 CLIB=./lib/
-CFLAGS=-Fu$(CUNIT) -Fl$(CLIB) -Px86_64
+CFLAGS=-Fi$(CINC) -Fu$(CUNIT) -Fl$(CLIB) -Sm -Px86_64
 EXAMPLESDIR=./examples/
 BUILDDIR=$(EXAMPLESDIR)
-EXAMPLES=squares helloworld
+EXAMPLES=squares helloworld 2dcamsystem
 EXAMPLESTARGETS=$(addsuffix .exe,$(addprefix $(EXAMPLESDIR),$(EXAMPLES)))
 
 .PHONY: examples clean
