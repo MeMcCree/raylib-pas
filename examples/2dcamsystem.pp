@@ -1,7 +1,8 @@
 program cam2dsystem;
 uses raylib;
+type
+    BUILDINGS_IDX = 0..99;
 const
-    MAX_BUILDINGS: Integer = 100;
     screenWidth: Integer = 800;
     screenHeight: Integer = 450;
 var
@@ -17,7 +18,7 @@ begin
 
     spacing := 0;
 
-    for i := 0 to MAX_BUILDINGS-1 do
+    for i := Low(BUILDINGS_IDX) to High(BUILDINGS_IDX) do
     begin
         buildings[i].width := 1.0 * GetRandomValue(50, 200);
         buildings[i].height := 1.0 * GetRandomValue(100, 800);
@@ -92,7 +93,7 @@ begin
 
                 DrawRectangle(-6000, 320, 13000, 8000, DARKGRAY);
 
-                for i := 0 to MAX_BUILDINGS-1 do
+                for i := Low(BUILDINGS_IDX) to High(BUILDINGS_IDX) do
                     DrawRectangleRec(buildings[i], buildColors[i]);
 
                 DrawRectangleRec(player, RED);

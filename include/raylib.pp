@@ -20,6 +20,7 @@ type
 {$include rmodels.inc}
 {$include raudio.inc}
 {$include rmath.inc}
+{$include rcamera.inc}
 
 const
 {$include rayconsts.inc}
