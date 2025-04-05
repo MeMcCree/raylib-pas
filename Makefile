@@ -5,7 +5,7 @@ CLIB=./lib/
 CFLAGS=-Fi$(CINC) -Fu$(CUNIT) -Fl$(CLIB) -Px86_64
 EXAMPLESDIR=./examples/
 BUILDDIR=$(EXAMPLESDIR)
-EXAMPLES=squares helloworld 2dcamsystem 3dcam
+EXAMPLES=squares helloworld 2dcamsystem 3dcam multisample
 EXAMPLESTARGETS=$(addsuffix .exe,$(addprefix $(EXAMPLESDIR),$(EXAMPLES)))
 
 .PHONY: examples clean
